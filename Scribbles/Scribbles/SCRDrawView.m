@@ -16,9 +16,11 @@
     if (self) {
         // Initialization code
         
-        self.scribblePoints = [@[] mutableCopy];
+        self.scribbles = [@[] mutableCopy];
         
-        self.backgroundColor = [UIColor blackColor];
+        
+        self.lineColor = [UIColor blackColor];
+        self.backgroundColor = [UIColor whiteColor];
         
     }
     return self;
@@ -31,25 +33,37 @@
 {
     // Drawing code
     
-    // this grabs our conext layer to draw on
+    // this grabs our context layer to draw on
     CGContextRef context = UIGraphicsGetCurrentContext();
     
     // this sets stroke or fill colors that follow
-    [[UIColor whiteColor] set];
+    [self.lineColor set];
     
-    CGContextMoveToPoint(context,0, 0);
     
-    for (NSValue * pointVal in self.scribblePoints)
+    for (NSArray * scribble in self.scribbles)
     {
-        CGPoint point = [pointVal CGPointValue];
+        if (scribble.count > 0)
+        {
+            
+            CGPoint startPoint = [scribble[0] CGPointValue];
+            
+            CGContextMoveToPoint(context,startPoint.x, startPoint.y);
+            
+        }
         
-        CGContextAddLineToPoint(context, point.x, point.y);
+        for (NSValue * pointVal in scribble)
+        {
+            CGPoint point = [pointVal CGPointValue];
+            
+            CGContextAddLineToPoint(context, point.x, point.y);
+        }
+        
     }
     
+  
     
     // this draws the context
     CGContextStrokePath(context);
-    
     
     
 }
@@ -57,17 +71,32 @@
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    
+    self.currentScribble = [@[] mutableCopy];
+    [self.scribbles addObject:self.currentScribble];
+    
+    NSLog(@"%@",self.scribbles);
+    
+    [self scribbleWithTouches:touches];
+}
+
+-(void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [self scribbleWithTouches:touches];
+}
+
+- (void)scribbleWithTouches: (NSSet *)touches
+{
     for (UITouch * touch in touches)
     {
         CGPoint location = [touch locationInView:self];
         
         // adding object to our array ... 2nd half - needs to be a C object with a values
         
-        [self.scribblePoints addObject: [NSValue valueWithCGPoint:location]];
+        [self.currentScribble addObject: [NSValue valueWithCGPoint:location]];
     }
     
     [self setNeedsDisplay];
 }
-
 
 @end

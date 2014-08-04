@@ -10,6 +10,11 @@
 
 @interface SCRDrawView : UIView
 
-@property (nonatomic) NSMutableArray * scribblePoints;
+//@property (nonatomic) NSMutableArray * scribblePoints;
+
+@property (nonatomic) NSMutableArray * scribbles;
+@property (nonatomic) NSMutableArray * currentScribble;
+
+@property (nonatomic) UIColor * lineColor;
 
 @end

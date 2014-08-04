@@ -28,17 +28,53 @@
     return self;
 }
 
-- (void)viewDidLoad
+- (void)viewWillAppear:(BOOL)animated
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    NSArray * colors = @[
+                         [UIColor cyanColor],
+                         [UIColor magentaColor],
+                         [UIColor yellowColor],
+                         [UIColor blueColor],
+                         ];
+    
+    for (UIColor * color in colors)
+    {
+        NSInteger index = [colors indexOfObject:color];
+        
+        UIButton * colorButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 10 + (50 * index), 40, 40)];
+    
+    colorButton.backgroundColor = color;
+    colorButton.layer.cornerRadius = 20;
+    
+    [colorButton addTarget:self action:@selector(changeLineColor:) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:colorButton];
+        
+    }
+   
 }
+
+- (void)changeLineColor:(UIButton *)button
+{
+    SCRDrawView * view = (SCRDrawView *)self.view;
+    
+    view.lineColor = button.backgroundColor;
+    [view setNeedsDisplay];
+}
+
+
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
+-(BOOL)prefersStatusBarHidden { return YES; }
+
 
 /*
 #pragma mark - Navigation
