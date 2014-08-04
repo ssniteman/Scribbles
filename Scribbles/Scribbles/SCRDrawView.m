@@ -39,10 +39,16 @@
     // this sets stroke or fill colors that follow
     [self.lineColor set];
     
+    CGContextSetLineCap(context, kCGLineCapRound);
+    CGContextSetLineJoin(context, kCGLineJoinRound);
+    
     
     for (NSDictionary * scribble in self.scribbles)
     {
        
+        CGContextSetLineWidth(context, [scribble[@"width"] intValue]);
+        
+        
         NSArray * points = (NSArray *) scribble[@"points"];
         
         
@@ -65,12 +71,15 @@
             CGContextAddLineToPoint(context, point.x, point.y);
         }
         
+        
+        // this draws the context
+        // breaks the context up into new touches - makes the color different for each touch - it's now in the loop
+        CGContextStrokePath(context);
+        
     }
     
   
-    
-    // this draws the context
-    CGContextStrokePath(context);
+
     
     
 }
@@ -79,9 +88,14 @@
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     
+    // pulling a random number from 5 to 20
+    
+    int random = arc4random_uniform(20) + 5;
+    
     self.currentScribble = [@{
                               @"color":self.lineColor,
-                              @"points":[@[] mutableCopy]
+                              @"points":[@[] mutableCopy],
+                              @"width":@(random),
                               } mutableCopy];
     
     [self.scribbles addObject:self.currentScribble];
