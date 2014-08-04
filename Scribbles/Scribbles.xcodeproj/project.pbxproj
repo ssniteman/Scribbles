@@ -19,6 +19,8 @@
 		605B28C0198FBF390058CE73 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 605B28A8198FBF390058CE73 /* UIKit.framework */; };
 		605B28C8198FBF390058CE73 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 605B28C6198FBF390058CE73 /* InfoPlist.strings */; };
 		605B28CA198FBF390058CE73 /* ScribblesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 605B28C9198FBF390058CE73 /* ScribblesTests.m */; };
+		605B28D6198FBFAE0058CE73 /* SCRDrawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 605B28D5198FBFAE0058CE73 /* SCRDrawViewController.m */; };
+		605B28DA198FBFFB0058CE73 /* SCRDrawView.m in Sources */ = {isa = PBXBuildFile; fileRef = 605B28D9198FBFFB0058CE73 /* SCRDrawView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,10 @@
 		605B28C5198FBF390058CE73 /* ScribblesTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ScribblesTests-Info.plist"; sourceTree = "<group>"; };
 		605B28C7198FBF390058CE73 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		605B28C9198FBF390058CE73 /* ScribblesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScribblesTests.m; sourceTree = "<group>"; };
+		605B28D4198FBFAE0058CE73 /* SCRDrawViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SCRDrawViewController.h; path = Scribbles/SCRDrawViewController.h; sourceTree = "<group>"; };
+		605B28D5198FBFAE0058CE73 /* SCRDrawViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SCRDrawViewController.m; path = Scribbles/SCRDrawViewController.m; sourceTree = "<group>"; };
+		605B28D8198FBFFB0058CE73 /* SCRDrawView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SCRDrawView.h; path = Scribbles/SCRDrawView.h; sourceTree = "<group>"; };
+		605B28D9198FBFFB0058CE73 /* SCRDrawView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SCRDrawView.m; path = Scribbles/SCRDrawView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +83,7 @@
 		605B2898198FBF390058CE73 = {
 			isa = PBXGroup;
 			children = (
+				605B28D3198FBF840058CE73 /* Controllers */,
 				605B28AA198FBF390058CE73 /* Scribbles */,
 				605B28C3198FBF390058CE73 /* ScribblesTests */,
 				605B28A3198FBF390058CE73 /* Frameworks */,
@@ -142,6 +149,25 @@
 				605B28C6198FBF390058CE73 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		605B28D3198FBF840058CE73 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				605B28D4198FBFAE0058CE73 /* SCRDrawViewController.h */,
+				605B28D5198FBFAE0058CE73 /* SCRDrawViewController.m */,
+				605B28D7198FBFCF0058CE73 /* Draw Views */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		605B28D7198FBFCF0058CE73 /* Draw Views */ = {
+			isa = PBXGroup;
+			children = (
+				605B28D8198FBFFB0058CE73 /* SCRDrawView.h */,
+				605B28D9198FBFFB0058CE73 /* SCRDrawView.m */,
+			);
+			name = "Draw Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,6 +267,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				605B28B1198FBF390058CE73 /* main.m in Sources */,
+				605B28DA198FBFFB0058CE73 /* SCRDrawView.m in Sources */,
+				605B28D6198FBFAE0058CE73 /* SCRDrawViewController.m in Sources */,
 				605B28B5198FBF390058CE73 /* SCRAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
