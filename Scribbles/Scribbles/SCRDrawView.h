@@ -13,7 +13,7 @@
 //@property (nonatomic) NSMutableArray * scribblePoints;
 
 @property (nonatomic) NSMutableArray * scribbles;
-@property (nonatomic) NSMutableArray * currentScribble;
+@property (nonatomic) NSMutableDictionary * currentScribble;
 
 @property (nonatomic) UIColor * lineColor;
 

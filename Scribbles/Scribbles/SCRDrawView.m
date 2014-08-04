@@ -40,18 +40,25 @@
     [self.lineColor set];
     
     
-    for (NSArray * scribble in self.scribbles)
+    for (NSDictionary * scribble in self.scribbles)
     {
-        if (scribble.count > 0)
+       
+        NSArray * points = (NSArray *) scribble[@"points"];
+        
+        
+        UIColor * lineColor = scribble[@"color"];
+        [lineColor set];
+        
+        if (points.count > 0)
         {
             
-            CGPoint startPoint = [scribble[0] CGPointValue];
+            CGPoint startPoint = [points[0] CGPointValue];
             
             CGContextMoveToPoint(context,startPoint.x, startPoint.y);
             
         }
         
-        for (NSValue * pointVal in scribble)
+        for (NSValue * pointVal in points)
         {
             CGPoint point = [pointVal CGPointValue];
             
@@ -72,7 +79,11 @@
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     
-    self.currentScribble = [@[] mutableCopy];
+    self.currentScribble = [@{
+                              @"color":self.lineColor,
+                              @"points":[@[] mutableCopy]
+                              } mutableCopy];
+    
     [self.scribbles addObject:self.currentScribble];
     
     NSLog(@"%@",self.scribbles);
@@ -93,7 +104,7 @@
         
         // adding object to our array ... 2nd half - needs to be a C object with a values
         
-        [self.currentScribble addObject: [NSValue valueWithCGPoint:location]];
+        [self.currentScribble[@"points"] addObject: [NSValue valueWithCGPoint:location]];
     }
     
     [self setNeedsDisplay];
