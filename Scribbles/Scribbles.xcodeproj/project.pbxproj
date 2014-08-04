@@ -21,6 +21,7 @@
 		605B28CA198FBF390058CE73 /* ScribblesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 605B28C9198FBF390058CE73 /* ScribblesTests.m */; };
 		605B28D6198FBFAE0058CE73 /* SCRDrawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 605B28D5198FBFAE0058CE73 /* SCRDrawViewController.m */; };
 		605B28DA198FBFFB0058CE73 /* SCRDrawView.m in Sources */ = {isa = PBXBuildFile; fileRef = 605B28D9198FBFFB0058CE73 /* SCRDrawView.m */; };
+		605B28DD19900C440058CE73 /* SCRSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 605B28DC19900C440058CE73 /* SCRSlider.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,8 @@
 		605B28D5198FBFAE0058CE73 /* SCRDrawViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SCRDrawViewController.m; path = Scribbles/SCRDrawViewController.m; sourceTree = "<group>"; };
 		605B28D8198FBFFB0058CE73 /* SCRDrawView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SCRDrawView.h; path = Scribbles/SCRDrawView.h; sourceTree = "<group>"; };
 		605B28D9198FBFFB0058CE73 /* SCRDrawView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SCRDrawView.m; path = Scribbles/SCRDrawView.m; sourceTree = "<group>"; };
+		605B28DB19900C440058CE73 /* SCRSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SCRSlider.h; path = Scribbles/SCRSlider.h; sourceTree = "<group>"; };
+		605B28DC19900C440058CE73 /* SCRSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SCRSlider.m; path = Scribbles/SCRSlider.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +160,8 @@
 				605B28D4198FBFAE0058CE73 /* SCRDrawViewController.h */,
 				605B28D5198FBFAE0058CE73 /* SCRDrawViewController.m */,
 				605B28D7198FBFCF0058CE73 /* Draw Views */,
+				605B28DB19900C440058CE73 /* SCRSlider.h */,
+				605B28DC19900C440058CE73 /* SCRSlider.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -269,6 +274,7 @@
 				605B28B1198FBF390058CE73 /* main.m in Sources */,
 				605B28DA198FBFFB0058CE73 /* SCRDrawView.m in Sources */,
 				605B28D6198FBFAE0058CE73 /* SCRDrawViewController.m in Sources */,
+				605B28DD19900C440058CE73 /* SCRSlider.m in Sources */,
 				605B28B5198FBF390058CE73 /* SCRAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
