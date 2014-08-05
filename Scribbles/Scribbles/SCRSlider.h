@@ -10,4 +10,12 @@
 
 @interface SCRSlider : UIView
 
+@property (nonatomic) float maxWidth;
+@property (nonatomic) float minWidth;
+
+@property (nonatomic) float currentWidth;
+
+
+@property (nonatomic) UIColor * lineColor;
+
 @end
