@@ -42,33 +42,36 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-   
-    /*
-    NSArray * colors = @[
-                         [UIColor cyanColor],
-                         [UIColor magentaColor],
-                         [UIColor yellowColor],
-                         [UIColor blueColor]
-                         ];
     
-    for (UIColor * color in colors)
-    {
-        NSInteger index = [colors indexOfObject:color];
-        
-        NSLog(@"%d",(int)index);
-        
-        UIButton * colorButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 10 + (50 * index), 40, 40)];
-        
-        
-    colorButton.backgroundColor = color;
-    colorButton.layer.cornerRadius = 20;
-    
-    [colorButton addTarget:self action:@selector(changeLineColor:) forControlEvents:UIControlEventTouchUpInside];
-    
-    [self.view addSubview:colorButton];
-        
-    }
-    */
+
+    colors = @[
+               [UIColor colorWithRed:0.992f green:0.533f blue:0.141f alpha:1.0f],
+               [UIColor colorWithRed:0.988f green:0.071f blue:0.384f alpha:1.0f],
+               [UIColor colorWithRed:0.255f green:0.067f blue:0.584f alpha:1.0f],
+               [UIColor colorWithRed:0.051f green:0.310f blue:0.851f alpha:1.0f],
+               [UIColor colorWithRed:0.173f green:0.996f blue:0.867f alpha:1.0f],
+               [UIColor colorWithRed:0.165f green:0.976f blue:0.596f alpha:1.0f],
+               [UIColor colorWithRed:0.996f green:0.914f blue:0.204f alpha:1.0f],
+               
+               ];
+//    for (UIColor * color in colors)
+//    {
+//        NSInteger index = [colors indexOfObject:color];
+//        
+//        NSLog(@"%d",(int)index);
+//        
+//        UIButton * colorButton = [[UIButton alloc] initWithFrame:CGRectMake(10, 10 + (50 * index), 40, 40)];
+//        
+//        
+//    colorButton.backgroundColor = color;
+//    colorButton.layer.cornerRadius = 20;
+//    
+//    [colorButton addTarget:self action:@selector(changeLineColor:) forControlEvents:UIControlEventTouchUpInside];
+//    
+//    [self.view addSubview:colorButton];
+//        
+//    }
+ 
     
     chooseColor = [[UIButton alloc] initWithFrame:CGRectMake((SCREEN_WIDTH - 60) / 2.0, SCREEN_HEIGHT - 70, 60, 60)];
     
@@ -192,6 +195,7 @@
         
         float moveX = chooseColor.center.x + sinf(radians * index) * radius;
         float moveY = chooseColor.center.y + cosf(radians * index) * radius;
+
         
         [UIView animateWithDuration:0.2 delay:0.05 * index options:UIViewAnimationOptionAllowUserInteraction animations:^{
          
@@ -204,6 +208,8 @@
         
         [self.view insertSubview: colorButton atIndex:0];
     }
+    
+    colorChoicesOpen = YES;
 }
 
 
