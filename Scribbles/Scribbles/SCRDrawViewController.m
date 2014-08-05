@@ -16,6 +16,14 @@
 
 @implementation SCRDrawViewController
 {
+    
+    NSArray * colors;
+    NSMutableArray * colorButtons;
+    
+    UIButton * chooseColor;
+    
+    BOOL colorChoicesOpen;
+    
     SCRSlider * lineSlider;
     UIView * lineWidthSize;
     
@@ -34,7 +42,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+   
+    /*
     NSArray * colors = @[
                          [UIColor cyanColor],
                          [UIColor magentaColor],
@@ -59,6 +68,22 @@
     [self.view addSubview:colorButton];
         
     }
+    */
+    
+    chooseColor = [[UIButton alloc] initWithFrame:CGRectMake((SCREEN_WIDTH - 60) / 2.0, SCREEN_HEIGHT - 70, 60, 60)];
+    
+    chooseColor.layer.cornerRadius = 30;
+    chooseColor.backgroundColor = colors[0];
+    [chooseColor addTarget:self action:@selector(showColorChoices) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:chooseColor];
+    
+    self.view.lineColor = colors[0];
+    
+    
+    
+    
+    
+    
     
     lineWidthSize = [[UIView alloc] initWithFrame:CGRectMake(0,0, 2,2)];
     lineWidthSize.backgroundColor = [UIColor blackColor];
@@ -127,6 +152,71 @@
     [view setNeedsDisplay];
 }
 
+
+- (void)hideColorChoices
+{
+    
+}
+
+
+- (void)showColorChoices
+{
+    if (colorChoicesOpen)
+    {
+        [self hideColorChoices];
+        return;
+    }
+    
+    for (UIColor * color in colors)
+    {
+        NSInteger index = [colors indexOfObject:color];
+        
+        UIButton * colorButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+        
+        [colorButtons addObject: colorButton];
+        
+        colorButton.center = chooseColor.center;
+        
+        colorButton.backgroundColor = color;
+        colorButton.layer.cornerRadius = 20;
+        
+        [colorButton addTarget:self action:@selector(changeLineColor:) forControlEvents:UIControlEventTouchUpInside];
+
+        
+        // getting the circle of dots around the middle one - crazy math
+        
+        float radius = 60;
+        float mpi = M_PI/180;
+        float angle = 360/colors.count;
+        float radians = angle * mpi;
+        
+        float moveX = chooseColor.center.x + sinf(radians * index) * radius;
+        float moveY = chooseColor.center.y + cosf(radians * index) * radius;
+        
+        [UIView animateWithDuration:0.2 delay:0.05 * index options:UIViewAnimationOptionAllowUserInteraction animations:^{
+         
+            colorButton.center = CGPointMake(moveX,moveY);
+         
+        
+         } completion:^(BOOL finished) {
+             
+         }];
+        
+        [self.view insertSubview: colorButton atIndex:0];
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
 -(BOOL)prefersStatusBarHidden { return YES; }
 
 @end
+
