@@ -10,11 +10,16 @@
 #import "SCRDrawView.h"
 #import "SCRSlider.h"
 
-@interface SCRDrawViewController ()
+@interface SCRDrawViewController () <SCRSliderDelegate>
 
 @end
 
 @implementation SCRDrawViewController
+{
+    SCRSlider * lineSlider;
+    UIView * lineWidthSize;
+    
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -55,15 +60,64 @@
         
     }
     
+    lineWidthSize = [[UIView alloc] initWithFrame:CGRectMake(0,0, 2,2)];
+    lineWidthSize.backgroundColor = [UIColor blackColor];
+    [self.view addSubview:lineWidthSize];
     
-    SCRSlider * sliderView = [[SCRSlider alloc] initWithFrame:CGRectMake(10, 250, 100, 300)];
+    UIButton * openLineWidthSlider = [[UIButton alloc] initWithFrame:CGRectMake(20, SCREEN_HEIGHT - 60, 40, 40)];
+    openLineWidthSlider.layer.cornerRadius = 20;
+    openLineWidthSlider.layer.borderWidth = 1.0;
+    openLineWidthSlider.layer.borderColor = [UIColor blackColor].CGColor;
+    
+    [openLineWidthSlider addTarget:self action:@selector(openSlider) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:openLineWidthSlider];
+    
+    lineWidthSize.center = openLineWidthSlider.center;
+    
+
    
-    [self.view addSubview:sliderView];
-                              
-                              
+    
+    
     
    
 }
+
+- (void)openSlider
+{
+    if (lineSlider)
+    {
+        [lineSlider removeFromSuperview];
+        lineSlider = nil;
+        return;
+    }
+    
+    
+    // pointing to SCRSlider file subview
+    
+    lineSlider = [[SCRSlider alloc] initWithFrame:CGRectMake(20, SCREEN_HEIGHT - 280, 40, 200)];
+    
+    lineSlider.currentWidth = self.view.lineWidth;
+    
+    lineSlider.delegate = self;
+    
+    [self.view addSubview:lineSlider];
+    
+}
+
+
+
+- (void)updateLineWidth:(float)lineWidth
+{
+    self.view.lineWidth = lineWidth;
+    
+    CGPoint center = lineWidthSize.center;
+    lineWidthSize.frame = CGRectMake(0, 0, lineWidth * 2, lineWidth * 2);
+    lineWidthSize.center = center;
+    lineWidthSize.layer.cornerRadius = lineWidth;
+}
+
+
 
 - (void)changeLineColor:(UIButton *)button
 {

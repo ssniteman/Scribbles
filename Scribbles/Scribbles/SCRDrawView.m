@@ -21,6 +21,7 @@
         
         self.lineColor = [UIColor blackColor];
         self.backgroundColor = [UIColor whiteColor];
+        self.lineWidth = 1;
         
     }
     return self;
@@ -98,7 +99,7 @@
     self.currentScribble = [@{
                               @"color":self.lineColor,
                               @"points":[@[] mutableCopy],
-                              @"width":@(random),
+                              @"width":@(self.lineWidth),
                               } mutableCopy];
     
     [self.scribbles addObject:self.currentScribble];

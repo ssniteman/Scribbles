@@ -122,6 +122,11 @@
     if (self.currentWidth < self.minWidth) self.currentWidth = self.minWidth;
     if (self.currentWidth > self.maxWidth) self.currentWidth = self.maxWidth;
     
+    
+    // calling method in the draw view controller... child talking to parent telling it to update the line width
+    
+    [self.delegate updateLineWidth:self.currentWidth];
+    
     [self setNeedsDisplay];
 }
 

@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol SCRSliderDelegate;
+
 @interface SCRSlider : UIView
 
 @property (nonatomic) float maxWidth;
@@ -18,4 +20,14 @@
 
 @property (nonatomic) UIColor * lineColor;
 
+@property (nonatomic,assign) id <SCRSliderDelegate> delegate;
+
 @end
+
+@protocol SCRSliderDelegate <NSObject>
+
+- (void)updateLineWidth:(float)lineWidth;
+
+@end
+
+
